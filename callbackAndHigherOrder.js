@@ -13,9 +13,9 @@ const multiply = (x, y, cb) => {
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-multiply(4, 3, answer => {
-  console.log('The answer is ' + answer) //should console.log 12
-})
+// multiply(4, 3, answer => {
+//   console.log('The answer is ' + answer) //should console.log 12
+// })
 
 
 
@@ -36,7 +36,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// CODE HERE 
+const first = (array, cb) => cb(array[0])
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -56,7 +56,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-// CODE HERE
+const last = (arr, cb) => cb(arr[arr.length-1])
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -78,7 +78,13 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-// CODE HERE 
+const contains = (arr, name, cb) =>{
+  if(arr.includes(name) === true) {
+    cb(true)
+  }else {
+    cb(false)
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -99,11 +105,22 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 /*
   Write a function called uniq that takes in an array and a callback function.
-  Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
+  Remove any duplicate values from the array, and invoke the callback with the 
+  modified array as an argument.
   Hint: you can use a nested for loop to do this.
 */
 
-// CODE HERE
+const uniq = (arr, cb) =>{
+  for(let i = 0; i <arr.length; i++) {
+    for(let j = i + 1; j < arr.length; j++){
+      if(arr[i] === arr[j]){
+        arr.splice(j,1)
+        j--
+      }
+    }
+  }
+  cb(arr)
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -113,18 +130,20 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+// uniq(names, uniqArr => console.log(`New array ${uniqArr} with duplicate items removed`))
 
 
 ////////// PROBLEM 6 //////////
 
 /* 
   Write a function called each that takes in an array of names and a callback function. 
-  For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
+  For each name in the array, invoke the callback and pass in the name 
+  and the name's index as arguments.
 */
 
-// CODE HERE 
-
+const each = (arr, cb) => {
+  arr.forEach((person, nameIndex) => cb(person, nameIndex))
+}
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -133,14 +152,16 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   'The item at index [INDEXPARAM] is [ITEMPARAM].'
 */
 
-// CODE HERE
-
+// each(names, (item, index) => console.log(`The item at index ${index} is ${item}`))
 
 ////////// PROBLEM 7 //////////
 
 /*
-  Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
-  When the correct user object is found, invoke the callback with the user object as an argument.
+  Write a function called getUserById that takes in three parameters: an array 
+  of objects (users), an id and a callback, and searches 
+  for the user with a matching id.
+  When the correct user object is found, invoke the callback with the user 
+  object as an argument.
 */
 
 // Do not edit the code below.
@@ -166,7 +187,13 @@ var users = [
 ]
 // Do not edit the code above.
 
-// CODE HERE 
+const getUserById = (arr, id, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i].id === id) {
+      return cb(arr[i]);
+    }
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
