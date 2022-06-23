@@ -134,4 +134,10 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
   Use a high order method(s) to get the sum of bobsTotal.
 */
 
-// CODE HERE
+const bobsTotal = purchases.filter(function(onlyMyTots) {
+  return onlyMyTots.owner === "Bob"
+}).reduce(function(account, money){
+  return account + money.price
+}, 0);
+
+console.log(bobsTotal)
