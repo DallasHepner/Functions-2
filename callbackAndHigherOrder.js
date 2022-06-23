@@ -220,7 +220,7 @@ const getUserById = (arr, id, cb) => {
   the two parameters together and return the sum.
 */
 
-// CODE HERE
+const addingFactory = (a) => (b) => a + b;
 
 /*
   Now that you have addingFactory, you can create other
@@ -234,7 +234,7 @@ const getUserById = (arr, id, cb) => {
   10 as an arguemnt.
 */
 
-// CODE HERE
+const addTen = addingFactory(10)
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -246,7 +246,8 @@ const getUserById = (arr, id, cb) => {
   to see the different outputs.
 */
 
-// CODE HERE
+console.log(addTen(3))
+console.log(addTen(222))
 
 /*
   Let's make another function from the addingFactory. 
@@ -259,4 +260,7 @@ const getUserById = (arr, id, cb) => {
   to add any number to your favorite number!
 */
 
-// CODE HERE
+const addThree = addingFactory(3)
+
+console.log(addThree(7))
+console.log(addThree(202))
