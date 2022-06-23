@@ -5,29 +5,17 @@
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-const multiply = (x, y) => {
-  return x * y
+const multiply = (x, y, cb) => {
+  cb(x * y);
 }
-
-const multiplication = (x, y, cb) => {
-  if (+x && +y) {
-    x = +x
-    y = +y
-    return cb(x, y)
-  }else{
-    console.log(`Please use only numbers`)
-  }
-}
-
-console.log(multiply(2, 3, multiply))
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+multiply(4, 3, answer => {
+  console.log('The answer is ' + answer) //should console.log 12
+})
 
 
 
